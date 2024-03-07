@@ -8,10 +8,31 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        "radix-yellow": {
+          400: "#FFF394",
+          600: "#F3D768",
+          800: "#D5AE39",
+          900: "#FFE629",
+          1000: "#FFFF57",
+          1100: "#F5E147",
+          1200: "#F6EEB4",
+        },
+        "radix-gray": {
+          100: "#111113",
+        },
+      },
+      flex: {
+        "6": "6 6 0%",
+      },
+      animation: {
+        marquee: "marquee 50s linear infinite",
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(10%)" },
+          "100%": { transform: "translateX(-90%)" },
+        },
       },
     },
   },
