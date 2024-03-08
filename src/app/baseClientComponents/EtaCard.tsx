@@ -38,7 +38,7 @@ export const EtaCard = ({ eta, stopId }: EtaCardProps) => {
       >
         {etas[eta.id] ? <BookmarkFilledIcon /> : <BookmarkIcon />}
       </IconButton>
-      <Card key={eta.id} className="flex items-center min-h-24">
+      <Card key={eta.id} className="flex items-center max-md:min-h-32 min-h-28">
         <Flex gap="2" align="center">
           <Badge
             radius="large"
