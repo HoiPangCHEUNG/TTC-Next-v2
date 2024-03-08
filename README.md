@@ -1,6 +1,8 @@
 ## TTC Next v2.0
 
-TTC Next is a web application that provides real-time information about the TTC (Toronto Transit Commission) subway system. It is a single-page application that uses [UMO open data API](https://retro.umoiq.com/service/publicJSONFeed) to display the current status of the buses/stree car lines, and estimated arrival time (ETA) for the next vehicle at a given stop number.
+TTC Next v2 is a web application that provides real-time information about the TTC (Toronto Transit Commission) subway system. It is a single-page application that uses [UMO open data API](https://retro.umoiq.com/service/publicJSONFeed) to display the current status of the buses/stree car lines, and estimated arrival time (ETA) for the next vehicle at a given stop number.
+
+Check out the original one in [here](https://github.com/HoiPangCHEUNG/TTC-Next)
 
 ## What's new in v2.0
 
