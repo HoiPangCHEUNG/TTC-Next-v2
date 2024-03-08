@@ -22,6 +22,7 @@ import {
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 import {
+  Cross2Icon,
   ExclamationTriangleIcon,
   MagnifyingGlassIcon,
 } from "@radix-ui/react-icons";
@@ -30,6 +31,7 @@ import {
   Button,
   Dialog,
   Flex,
+  IconButton,
   Separator,
   TextField,
 } from "@radix-ui/themes";
@@ -79,11 +81,18 @@ export const SearchDialog = () => {
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Content>
-        <Dialog.Title className="flex items-center justify-center space-x-2">
-          <IconLocation />
-          <div>{searchDialogTitle}</div>
-        </Dialog.Title>
-        <Separator my="3" size="4" />
+        <Flex className="relative" align="center" justify="center">
+          <Dialog.Title className="flex items-center justify-center space-x-2 flex-grow">
+            <IconLocation />
+            <div>{searchDialogTitle}</div>
+          </Dialog.Title>
+          <Dialog.Close className="absolute -top-2 -right-2">
+            <IconButton variant="ghost" className="">
+              <Cross2Icon />
+            </IconButton>
+          </Dialog.Close>
+        </Flex>
+        <Separator mb="3" size="4" />
         <TextField.Root>
           <TextField.Slot>
             <MagnifyingGlassIcon height="16" width="16" />
@@ -124,16 +133,13 @@ export const SearchDialog = () => {
               </Flex>
             ))}
         </div>
-        <Flex align="center" justify="center" gap="2" className="mt-4">
+        <Flex align="center" justify="center" className="mt-6">
           <Button
             disabled={searching || stopId === ""}
             onClick={() => setSearching(!searching)}
             variant="outline"
           >
             {searchButtonText}
-          </Button>
-          <Button onClick={closeDialog} variant="outline">
-            {closeButtonText}
           </Button>
         </Flex>
       </Dialog.Content>
