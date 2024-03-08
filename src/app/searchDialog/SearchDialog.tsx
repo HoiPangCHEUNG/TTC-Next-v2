@@ -91,6 +91,11 @@ export const SearchDialog = () => {
           <TextField.Input
             placeholder={searchDialogPlaceholder}
             onChange={(event) => setStopId(event.target.value)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                setSearching(!searching);
+              }
+            }}
           />
         </TextField.Root>
         <div
