@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## TTC Next v2.0
 
-## Getting Started
+TTC Next is a web application that provides real-time information about the TTC (Toronto Transit Commission) subway system. It is a single-page application that uses [UMO open data API](https://retro.umoiq.com/service/publicJSONFeed) to display the current status of the buses/stree car lines, and estimated arrival time (ETA) for the next vehicle at a given stop number.
 
-First, run the development server:
+## What's new in v2.0
 
-```bash
+- Built on top of NextJs 14
+- Radix UI components
+- Simplified click and search flow
+- Simplified Redux store + Redux Persist
+
+## Why Next.js 14?
+
+Server Actions & RSC (React Server Components) are the main features of Next.js 14.
+
+Currently, this web app uses server action to fetch data from the UMO API.
+
+In the future, if we migrate from Redux Persist to an actual database, we could fetch the bookmarked ETA data and render the server components on the server side to improve performance.
+
+## How to run the app
+
+```
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How to use the app
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Enter the stop number in the search bar and click on the search button
+- Bookmark the specific route inside this stop
+- Check the ETA before you leave your home/office
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+and say farewell to the hassle of searching for your ETA on different maps, or Transit App.
 
-## Learn More
+## Acknowledgements
 
-To learn more about Next.js, take a look at the following resources:
+SVG icons from [Delesign Graphics](https://iconscout.com/contributors/delesign) on Iconscout
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Under the MIT License

@@ -9,7 +9,7 @@ export const closeButtonText = "Close";
 
 // SearchDialog
 export const searchDialogTitle = "Find a Stop Number";
-export const searchDialogPlaceholder = "Please Enter the Stop Number";
+export const searchDialogPlaceholder = "Enter the Stop Number e.g. 14687";
 
 // Badge
 export const etaBadgeText = "Soon";
