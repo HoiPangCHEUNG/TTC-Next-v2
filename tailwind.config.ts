@@ -26,12 +26,17 @@ const config: Config = {
         "6": "6 6 0%",
       },
       animation: {
-        marquee: "marquee 50s linear infinite",
+        marquee: "marquee 100s linear infinite",
+        marquee2: "marquee2 100s linear infinite",
       },
       keyframes: {
         marquee: {
-          "0%": { transform: "translateX(10%)" },
-          "100%": { transform: "translateX(-90%)" },
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+        marquee2: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0%)" },
         },
       },
     },
