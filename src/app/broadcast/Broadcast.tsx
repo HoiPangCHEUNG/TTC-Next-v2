@@ -38,10 +38,10 @@ export const Broadcast = () => {
     <Callout.Root className="relative flex overflow-x-hidden px-2 mt-2 w-dvw">
       {messages.length > 0 ? (
         <div>
-          <div className="py-2 animate-marquee whitespace-nowrap">
+          <div className="animate-marquee whitespace-nowrap">
             <MarqueeText messages={messages} />
           </div>
-          <div className="absolute top-0 py-6 animate-marquee2 whitespace-nowrap">
+          <div className="absolute top-0 py-4 animate-marquee2 whitespace-nowrap">
             <MarqueeText messages={messages} />
           </div>
         </div>
