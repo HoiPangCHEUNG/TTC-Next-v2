@@ -35,7 +35,7 @@ export const Broadcast = () => {
   }, []);
 
   return (
-    <Callout.Root className="relative flex overflow-x-hidden px-2 mt-2 w-dvw">
+    <Callout.Root className="relative flex overflow-x-hidden px-2 mt-2 w-dvw min-h-[52px]">
       {messages.length > 0 ? (
         <div>
           <div className="animate-marquee whitespace-nowrap">

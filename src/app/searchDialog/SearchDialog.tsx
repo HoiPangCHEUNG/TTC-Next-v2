@@ -50,10 +50,7 @@ export const SearchDialog = () => {
 
   const closeDialog = () => {
     dispatch(closeSearchDialog());
-    setSearching(false);
-    setEtas([]);
     setOpen(false);
-    setSearched(false);
   };
 
   const onOpenChange = (open: boolean) => {
@@ -66,7 +63,6 @@ export const SearchDialog = () => {
 
     const fetchEtasByStopId = async () => {
       setEtas(await fetchData(stopId));
-      setSearched(false);
       setSearching(false);
       setSearched(true);
     };
@@ -74,8 +70,15 @@ export const SearchDialog = () => {
     fetchEtasByStopId();
   }, [searching, stopId]);
 
+  const reset = () => {
+    setEtas([]);
+    setSearching(false);
+    setSearched(false);
+  };
+
   useEffect(() => {
     setOpen(searchDialog.open);
+    reset();
   }, [searchDialog.open]);
 
   return (
@@ -86,7 +89,10 @@ export const SearchDialog = () => {
             <IconLocation />
             <div>{searchDialogTitle}</div>
           </Dialog.Title>
-          <Dialog.Close className="absolute -top-2 -right-2">
+          <Dialog.Close
+            onClick={closeDialog}
+            className="absolute -top-2 -right-2"
+          >
             <IconButton variant="ghost" className="">
               <Cross2Icon />
             </IconButton>
@@ -98,10 +104,11 @@ export const SearchDialog = () => {
             <MagnifyingGlassIcon height="16" width="16" />
           </TextField.Slot>
           <TextField.Input
+            autoFocus
             placeholder={searchDialogPlaceholder}
             onChange={(event) => setStopId(event.target.value)}
             onKeyDown={(event) => {
-              if (event.key === "Enter") {
+              if (event.key === "Enter" && stopId !== "") {
                 setSearching(!searching);
               }
             }}
