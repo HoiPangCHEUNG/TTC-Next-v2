@@ -2,9 +2,7 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}", // This includes all files inside 'src'
   ],
   theme: {
     extend: {
@@ -26,17 +24,12 @@ const config: Config = {
         "6": "6 6 0%",
       },
       animation: {
-        marquee: "marquee 100s linear infinite",
-        marquee2: "marquee2 100s linear infinite",
+        marquee: "marquee 15s linear infinite",
       },
       keyframes: {
         marquee: {
-          "0%": { transform: "translateX(0%)" },
+          "0%": { transform: "translateX(10%)" },
           "100%": { transform: "translateX(-100%)" },
-        },
-        marquee2: {
-          "0%": { transform: "translateX(100%)" },
-          "100%": { transform: "translateX(0%)" },
         },
       },
     },

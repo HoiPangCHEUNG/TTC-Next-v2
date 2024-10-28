@@ -15,14 +15,15 @@ export const searchDialogPlaceholder = "Enter the Stop Number e.g. 14687";
 export const etaBadgeText = "Soon";
 
 // Footer
-export const footerText = "© 2024 by L.C. Powered by umo API";
+export const footerText = "© 2024 L.C. | Data provided by TTC.ca and Umo API.";
 
 // App
 export const appName = "ETA Tracker v2";
 
-// Broadcast
-export const broadcastText =
+// Live Alert
+export const liveAlertNormalText =
   "All systems operating optimally. No issues detected.";
+export const liveAlertErrorText = "Error loading broadcast messages.";
 
 // error
-export const etaNotFoundText = "Umm... we couldn't find that stop. Try again?";
+export const etaNotFoundText = "Couldn't find that stop. Try again?";

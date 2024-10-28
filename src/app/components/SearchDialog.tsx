@@ -1,13 +1,13 @@
 "use client";
 
-import { fetchMultipleRouteEtas as fetchData } from "./actions";
+import { EtaCard } from "./EtaCard";
+import { Loading } from "./Loading";
+import { Search } from "./Search";
 
 import emptyEta from "../../../public/emptyEta.svg";
-import { EtaCard } from "../baseClientComponents/EtaCard";
-import { Loading } from "../baseClientComponents/Loading";
 import { addEtaButtonText, emptyEtaText } from "../constants/boilerplate";
 import { BranchEta, EmptyEtaProps } from "../interfaces/eta";
-import { SearchDialog } from "../searchDialog/SearchDialog";
+import { getMultipleEtasData } from "../utils/services/multipleStopsEtas";
 
 import { openSearchDialog } from "@/redux/features/searchDialog";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -15,47 +15,40 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { PlusIcon } from "@radix-ui/react-icons";
 import { Button, Flex } from "@radix-ui/themes";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
+import useSWR from "swr";
 
 export const Bookmark = (): JSX.Element => {
   const etas = useAppSelector((state) => state.etas);
-  const [loaded, setLoaded] = useState(false);
-  const [bookmarkedEtas, setBookmarkedEtas] = useState<BranchEta[]>([]);
-  const [revalidateToggle, setRevalidateToggle] = useState(false);
   const dispatch = useAppDispatch();
+
+  const generateSWRKey = () => {
+    const etaKeys = Object.keys(etas);
+    if (etaKeys.length === 0) return null;
+
+    const urlParams = etaKeys
+      .map((key) => `stops=${etas[key].routeTag}|${etas[key].stopTag}`)
+      .join("&");
+
+    return { urlParams, etaKeys };
+  };
+
+  const swrKey = useMemo(() => generateSWRKey(), [etas]);
+
+  const {
+    data: bookmarkedEtas,
+    isLoading,
+    mutate,
+  } = useSWR(
+    swrKey ? [swrKey.urlParams, swrKey.etaKeys] : null,
+    ([urlParams, etaKeys]) => getMultipleEtasData(urlParams, etaKeys),
+    { refreshInterval: 60000 }
+  );
 
   const handleAddEtaClick = () => {
     dispatch(openSearchDialog());
   };
 
-  // toggle revalidateToggle every 60 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRevalidateToggle(!revalidateToggle);
-    }, 60000);
-
-    return () => clearInterval(interval);
-  }, [revalidateToggle]);
-
-  useEffect(() => {
-    let urlParams = "";
-    const etaKeys = Object.keys(etas);
-
-    etaKeys.forEach((key) => {
-      urlParams = urlParams.concat(
-        `&stops=${etas[key].routeTag}|${etas[key].stopTag}`
-      );
-    });
-
-    const fetchMultipleRouteEtas = async () => {
-      setBookmarkedEtas(await fetchData(urlParams, etaKeys));
-      setLoaded(true);
-    };
-
-    fetchMultipleRouteEtas();
-  }, [etas, revalidateToggle]);
-
-  // EtaList component
   const EtaList = ({ bookmarkedEtas }: { bookmarkedEtas: BranchEta[] }) => (
     <Flex gap="4" direction="column">
       {bookmarkedEtas.map((eta) => (
@@ -64,7 +57,6 @@ export const Bookmark = (): JSX.Element => {
     </Flex>
   );
 
-  // EmptyEta component
   const EmptyEta = ({
     handleAddEtaClick,
     emptyEtaText,
@@ -82,14 +74,14 @@ export const Bookmark = (): JSX.Element => {
 
   return (
     <div className="flex-grow w-full max-w-lg ">
-      <SearchDialog />
-      {!loaded ? (
+      <Search />
+      {isLoading ? (
         <div className="h-full flex items-center justify-center">
           <Loading />
         </div>
       ) : (
         <div className="px-6 py-8 h-full ">
-          {bookmarkedEtas.length > 0 ? (
+          {bookmarkedEtas && bookmarkedEtas.length > 0 ? (
             <EtaList bookmarkedEtas={bookmarkedEtas} />
           ) : (
             <EmptyEta
