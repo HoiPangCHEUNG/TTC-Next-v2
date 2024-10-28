@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(await response.json());
   } catch (e: any) {
-    console.log(e);
+    console.log("Error fetching live alerts:", e);
     return NextResponse.json({ message: e.message }, { status: 500 });
   }
 }

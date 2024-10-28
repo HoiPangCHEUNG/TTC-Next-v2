@@ -8,7 +8,6 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const urlParams = searchParams.toString();
 
-    console.log(urlParams);
     if (!env.TTC_DATA_ENDPOINT) {
       return NextResponse.json(
         { message: "etas endpoint not found" },
