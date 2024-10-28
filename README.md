@@ -6,9 +6,9 @@ Check out the original one in [here](https://github.com/HoiPangCHEUNG/TTC-Next)
 
 ## What's new in v2.0
 
-- Rebuilt with Next.js & Radix UI for a modern, streamlined interface.
-- Redux + SWR integration to manage state efficiently and keep data fresh.
-- Simplified click-and-search flow for a smoother, more intuitive user experience.
+- Rebuilt with Next.js & Radix UI
+- Redux + SWR integration
+- Simplified click-and-search flow
 
 ## How to run the app
 
