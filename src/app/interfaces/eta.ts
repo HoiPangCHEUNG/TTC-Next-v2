@@ -1,6 +1,6 @@
-/**
- * Interface for Eta store inside localStorage
- */
+import { ALERT_SEVERITY_TYPE } from "../constants/alert";
+
+// Interface for Eta store inside localStorage
 export interface BookmarkEta {
   id: string;
   // identifier for the routes, routes could have different branch such as 60`A`, 60`B`
@@ -40,6 +40,7 @@ interface PredictioDetail {
   stopTag: string;
   stopTitle: string;
 }
+
 export interface EtaPredictionJson {
   copyright: string;
   predictions: PredictioDetail | PredictioDetail[];
@@ -60,7 +61,15 @@ export interface TransitStatus {
   route: RouteStatus[];
 }
 
-// eta card props
+export interface LiveAlert {
+  total: number;
+  routes?: {
+    title: string;
+    description: string;
+    severity: ALERT_SEVERITY_TYPE;
+  }[];
+}
+
 export interface EtaCardProps {
   eta: BranchEta;
   stopId: string;

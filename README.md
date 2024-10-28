@@ -6,18 +6,9 @@ Check out the original one in [here](https://github.com/HoiPangCHEUNG/TTC-Next)
 
 ## What's new in v2.0
 
-- Built on top of NextJs 14
-- Radix UI components
-- Simplified click and search flow
-- Simplified Redux store + Redux Persist
-
-## Why Next.js 14?
-
-Server Actions & RSC (React Server Components) are the main features of Next.js 14.
-
-Currently, this web app uses server action to fetch data from the UMO API.
-
-In the future, if we migrate from Redux Persist to an actual database, we could fetch the bookmarked ETA data and render the server components on the server side to improve performance.
+- Rebuilt with Next.js & Radix UI
+- Redux + SWR integration
+- Simplified click-and-search flow
 
 ## How to run the app
 
@@ -32,11 +23,21 @@ npm run dev
 - Bookmark the specific route inside this stop
 - Check the ETA before you leave your home/office
 
-and say farewell to the hassle of searching for your ETA on different maps, or Transit App.
+Pro tip: If it’s practical, consider taking the car. 🚗
 
 ## Acknowledgements
 
 SVG icons from [Delesign Graphics](https://iconscout.com/contributors/delesign) on Iconscout
+
+## Development Decisions
+
+I decided to switch from server actions to API routes for a smoother debugging experience. With API routes, I can easily track requests and responses through the browser’s network tab, making troubleshooting much more efficient.
+
+Server actions, on the other hand, felt like a bit of a black box—when things went wrong, it was hard to trace the issue. Since this project only interacts with public external services, there’s no need to hide anything from the client side, making API routes the ideal choice here.
+
+This switch results in faster debugging, clearer insights, and an overall better development flow.
+
+P.S.1: I still use server actions for production-level projects—just not for this one.
 
 ## License
 

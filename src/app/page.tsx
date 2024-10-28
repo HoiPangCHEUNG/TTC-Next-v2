@@ -1,13 +1,13 @@
 import "@radix-ui/themes/styles.css";
-import { Footer } from "./baseClientComponents/Footer";
-import { Header } from "./baseClientComponents/Header";
-import { Bookmark } from "./bookmark/Bookmark";
-import { Broadcast } from "./broadcast/Broadcast";
+import { Alert } from "./components/Alert";
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
+import { Bookmark } from "./components/SearchDialog";
 
 export default function Home() {
   return (
     <main className="flex flex-col items-center h-dvh">
-      <Broadcast />
+      <Alert />
       <Header />
       <Bookmark />
       <Footer />
