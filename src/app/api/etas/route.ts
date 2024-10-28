@@ -16,12 +16,7 @@ export async function GET(request: NextRequest) {
     }
 
     const endpoint = `${env.TTC_DATA_ENDPOINT}?${urlParams}`;
-
     const response = await fetch(endpoint, { cache: "no-store" });
-
-    if (!response.ok) {
-      throw new Error("Failed to fetch data from external API");
-    }
 
     const dataJson = await response.json();
     return NextResponse.json(dataJson);

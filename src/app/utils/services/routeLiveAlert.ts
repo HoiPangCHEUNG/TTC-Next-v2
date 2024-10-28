@@ -18,8 +18,7 @@ export const getRouteLiveAlert = async () => {
       }
     });
 
-    return [...msgs, ...msgs, ...msgs, ...msgs];
-    // return Array.from(new Set(msgs));
+    return Array.from(new Set(msgs));
   } catch (error) {
     console.error("Error fetching live alerts:", error);
     return [];
