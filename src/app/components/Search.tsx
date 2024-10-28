@@ -1,6 +1,5 @@
 "use client";
 
-import { fetchEtasByStopId } from "./actions";
 import { EtaCard } from "./EtaCard";
 import { IconLocation } from "./Icons";
 import { Loading } from "./Loading";
@@ -112,7 +111,7 @@ export const Search = () => {
             value={text}
             onChange={(event) => setText(event.target.value)}
             onKeyDown={(event) => {
-              if (event.key === "Enter" && stopId !== "") {
+              if (event.key === "Enter" && text !== "") {
                 handleSearch();
               }
             }}
