@@ -11,8 +11,7 @@ export const getRouteLiveAlert = async () => {
       if (
         (route.severity === ALERT_SEVERITY_TYPE.CRITICAL ||
           route.severity === ALERT_SEVERITY_TYPE.MAJOR) &&
-        route.title &&
-        route.description
+        (route.description || route.title)
       ) {
         msgs.push(`${route.title} ${route.description}`);
       }
