@@ -16,7 +16,7 @@ export const Header = () => {
   };
 
   return (
-    <div className="sticky z-30 opacity-100 w-full max-w-lg bg-radix-gray-100">
+    <div className=" pt-1 sticky z-30 opacity-100 w-full max-w-lg bg-radix-gray-100">
       <Flex align="center" justify="center" className="px-6 py-4 w-full">
         <div className="flex-grow font-bold text-xl">{appName}</div>
         {etas && Object.keys(etas).length > 0 && (
